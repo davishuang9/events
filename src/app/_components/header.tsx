@@ -1,5 +1,3 @@
-"use client";
-
 import { AccountDropdown } from "@/components/account-dropdown";
 import { Session } from "node_modules/next-auth/core/types";
 
