@@ -28,10 +28,12 @@ export function AccountDropdown({ session }: AccountDropdownProps) {
           {/* <DropdownMenuSeparator /> */}
           {session && (
             <>
-              <DropdownMenuItem>
-                <Calendar className="mr-2 h-4 w-4" />
-                <span>Events</span>
-              </DropdownMenuItem>
+              <Link href={"/events"}>
+                <DropdownMenuItem>
+                  <Calendar className="mr-2 h-4 w-4" />
+                  <span>Events</span>
+                </DropdownMenuItem>
+              </Link>
               <DropdownMenuSeparator />
             </>
           )}

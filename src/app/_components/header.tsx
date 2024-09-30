@@ -1,13 +1,15 @@
 import { AccountDropdown } from "@/components/account-dropdown";
-import { Session } from "node_modules/next-auth/core/types";
+import { getServerAuthSession } from "@/server/auth";
+import { api } from "@/trpc/server";
 
-type HeaderProps = {
-  session: Session | null;
-};
+export async function Header() {
+  const session = await getServerAuthSession();
 
-export function Header({ session }: HeaderProps) {
+  if (session?.user) {
+    void api.post.getLatest.prefetch();
+  }
   return (
-    <div className="absolute top-0 flex w-screen justify-between">
+    <div className="top-0 flex w-screen justify-between">
       <div className="p-4">
         <span className="text-xl">1️⃣</span>
         <span className="ml-2 text-xl font-bold text-indigo-600">onestop</span>

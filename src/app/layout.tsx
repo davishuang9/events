@@ -4,6 +4,8 @@ import { GeistSans } from "geist/font/sans";
 import { type Metadata } from "next";
 
 import { TRPCReactProvider } from "@/trpc/react";
+import { Header } from "./_components/header";
+import { HydrateClient } from "@/trpc/server";
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -11,13 +13,18 @@ export const metadata: Metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
-      <body>
-        <TRPCReactProvider>{children}</TRPCReactProvider>
+      <body className="flex min-h-screen flex-col bg-gray-100">
+        <TRPCReactProvider>
+          <HydrateClient>
+            <Header />
+            <main className="flex flex-grow">{children}</main>
+          </HydrateClient>
+        </TRPCReactProvider>
       </body>
     </html>
   );
