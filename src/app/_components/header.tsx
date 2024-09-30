@@ -4,10 +4,6 @@ import { api } from "@/trpc/server";
 
 export async function Header() {
   const session = await getServerAuthSession();
-
-  if (session?.user) {
-    void api.post.getLatest.prefetch();
-  }
   return (
     <div className="top-0 flex w-screen justify-between">
       <div className="p-4">
