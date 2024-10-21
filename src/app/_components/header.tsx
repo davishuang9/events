@@ -1,6 +1,5 @@
 import { AccountDropdown } from "@/components/account-dropdown";
 import { getServerAuthSession } from "@/server/auth";
-import { api } from "@/trpc/server";
 
 export async function Header() {
   const session = await getServerAuthSession();

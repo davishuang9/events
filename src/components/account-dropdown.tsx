@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { LogOut, Calendar } from "lucide-react";
 import Link from "next/dist/client/link";
-import { Session } from "node_modules/next-auth/core/types";
+import type { Session } from "node_modules/next-auth/core/types";
 
 type AccountDropdownProps = {
   session: Session | null;

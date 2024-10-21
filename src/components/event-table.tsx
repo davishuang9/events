@@ -80,7 +80,7 @@ export function EventsTable() {
               isActive={currentPage === 1}
             />
           </PaginationItem>
-          {[...Array(totalPages)].map((_, index) => (
+          {[Array.from({length: totalPages})].map((_, index) => (
             <PaginationItem key={index}>
               <PaginationLink
                 onClick={() => setCurrentPage(index + 1)}
